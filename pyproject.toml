@@ -1,0 +1,48 @@
+[project]
+name = "URL-phishing-baseline-model"
+authors = [
+    {name = "Tamás Kurics", email = "tamas.kurics@gmail.com"},
+]
+description = "A simple baseline model for URL-only phishing detection."
+requires-python = "==3.13.*"
+classifiers = [
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+    "joblib == 1.6.0",
+    "matplotlib == 3.11.2",
+    "numpy == 2.5.0",
+    "pandas == 3.0.5",
+    "pydantic == 2.13.5",
+    "scikit-learn == 1.9.1",
+]
+version = "1.0.0"
+
+[dependency-groups]
+dev = [
+    "black == 26.5.1",
+    "flake8 == 7.3.0",
+    "isort == 8.0.1",
+    "mypy == 2.1.0",
+    "notebook == 6.5.7",
+    "setuptools == 84.0.0",
+]
+experimental = [
+    "onnx == 1.21.0",
+    "onnxruntime == 1.30.0",
+    "skl2onnx == 1.20.0",
+]
+
+[tool.black]
+    line-length = 120
+    target-version = ["py313"]
+
+[tool.isort]
+    profile = "black"
+    line_length = 120
+    reverse_relative = true
+
+[tool.uv]
+    default-groups = ["dev", "experimental"]
+    link-mode = "copy"
+    package = false
