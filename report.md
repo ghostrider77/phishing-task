@@ -72,7 +72,7 @@ Anyway, this time the selected threshold remained $\tau = 0.85946$.
            1      1.000     0.346     0.514       853
 ```
 
-This is the result of evaluation, without weights / prevalence adjustment. I did not have to work out the details between the evaluation on the data I had and the expected behavior in real-life. So in the toy test data I had an overly optimistic $1.00$ precision and a `34.6%` recall and a good `AUC = 0.976`.
+This is the result of evaluation, without weights / prevalence adjustment. I did not have time to work out the details between the evaluation on the data I had and the expected behavior in real-life. So in the toy test data I had an overly optimistic $1.00$ precision and a `34.6%` recall and a good `AUC = 0.976`.
 
 ## (5) Evaluating on the independent datasets 
 
@@ -100,6 +100,8 @@ However, the external dataset is different.
 <img src="images/confusion_matrix_external.png" width="500"/>
 
 `AUC` is down to $0.86$ and most of the positive examples remain undetected. The reason for that is possible data distribution differences, that is, during training the model never seen examples that were similar to the phishing examples present in this external data file.
+
+I added here the prevalence adjusted metrics as well. On the `test.csv` file precision is $0.996$ with a prevalence-adjusted precision $0.1827$. Recall remains $0.313$, `FPR` is $0.014$. On the external data since the original precision was perfect, its adjustment remains $1.000$ and `FPR` is zero. Here the small recall is the issue, that is, $9$ out of $10$ phishing examples remain undetected.
 
 To sum up, we ended up with a model that has a good `AUC`, it has an estimated precision of $0.48$ in real-world scenario with $0.27$ recall, however, it is trained on a small dataset and performs poorly on one of the unseen data, basically leaving a large number of phishing urls undetected, but at least the false positve rate remains low. To fix the issue, I would do the following steps:
 * collect more data

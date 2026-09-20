@@ -7958,7 +7958,7 @@ FPR: 0.00029
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>This is the result of evaluation, without weights / prevalence adjustment. I did not have to work out the details between the evaluation on the data I had and the expected behavior in real-life. So in the toy test data I had an overly optimistic $1.00$ precision and a <code>34.6%</code> recall and a good <code>AUC = 0.976</code>.</p>
+<p>This is the result of evaluation, without weights / prevalence adjustment. I did not have time to work out the details between the evaluation on the data I had and the expected behavior in real-life. So in the toy test data I had an overly optimistic $1.00$ precision and a <code>34.6%</code> recall and a good <code>AUC = 0.976</code>.</p>
 </div>
 </div>
 </div>
@@ -8036,6 +8036,17 @@ FPR: 0.00029
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><code>AUC</code> is down to $0.86$ and most of the positive examples remain undetected. The reason for that is possible data distribution differences, that is, during training the model never seen examples that were similar to the phishing examples present in this external data file.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=498a802f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>I added here the prevalence adjusted metrics as well. On the <code>test.csv</code> file precision is $0.996$ with a prevalence-adjusted precision $0.1827$. Recall remains $0.313$, <code>FPR</code> is $0.014$. On the external data since the original precision was perfect, its adjustment remains $1.000$ and <code>FPR</code> is zero. Here the small recall is the issue, that is, $9$ out of $10$ phishing examples remain undetected.</p>
 </div>
 </div>
 </div>
